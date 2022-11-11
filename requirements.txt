@@ -1,0 +1,7 @@
+tweepy 
+streamlit 
+pandas
+transformers
+tensorflow
+textblob
+wordcloud
