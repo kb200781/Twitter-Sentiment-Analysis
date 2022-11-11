@@ -35,9 +35,11 @@ posts = api.user_timeline(screen_name =username, count = number, lang = "en", tw
 
 # Create a dataframe with a column called Tweets
 df = pd.DataFrame( [tweet.full_text for tweet in posts] , columns=['Tweets'])
+st.dataframe(tweet.full_text for tweet in posts] , columns=['Tweets'])
 
 # Show the first 5 rows of data
-##df.head()
+#df.head()
+
 
 # Clean the text
 
