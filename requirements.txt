@@ -1,8 +1,8 @@
-tweepy 
-streamlit 
+streamlit
 pandas
-transformers
-tensorflow
+numpy
+re
+tweepy
 textblob
 wordcloud
-cleantext
+matplotlib.pyplot
