@@ -4,4 +4,3 @@ numpy
 tweepy
 textblob
 wordcloud
-matplotlib.pyplot
