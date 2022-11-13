@@ -4,12 +4,14 @@ import pandas as pd
 import numpy as np
 import re
 import tweepy
+import altair as alt
 from textblob import TextBlob
 from wordcloud import WordCloud
 import matplotlib.pyplot as plt
 plt.style.use('fivethirtyeight')
 
-st.title('Get Tweets')
+st.title('Twitter Sentiment Analysis')
+st.subheader('Get Tweets')
 
 consumerKey = "we0Drpnvc1FZNazKkiKoFWlGf"
 consumerSecret = "OXRvmJwM6ca9k90XMIMoktSCa5XvjNieqJivcfjbOAlmpO6RhH"
@@ -62,3 +64,16 @@ if go:
   df['Polarity'] = df['Tweets'].apply(getPolarity)
   df['Analysis'] = df['Polarity'].apply(getAnalysis)
   st.write(df.head())
+
+  st.subheader('See what we have analysed')
+
+  chart_data = df.iloc[:,1:3]
+  c = alt.Chart(chart_data).mark_circle().encode(alt.X("Polarity"),alt.Y("Subjectivity"))
+  st.altair_chart(c, use_container_width=True)
+
+  ptweets = df[df.Analysis == 'Positive']
+  ptweets = ptweets['Tweets']
+  ntweets = df[df.Analysis == 'Negative']
+  ntweets = ntweets['Tweets']
+  st.write(str(round( (ptweets.shape[0] / df.shape[0]) *100 , 1)) + '% of tweets are positive and ' 
+           + str(round( (ntweets.shape[0] / df.shape[0]) *100 , 1)) + '% are negative')
