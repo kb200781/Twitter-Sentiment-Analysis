@@ -65,7 +65,7 @@ if go:
   df['Analysis'] = df['Polarity'].apply(getAnalysis)
   st.write(df.head())
 
-  st.subheader('See what we have analysed')
+  st.header('See what we have analysed')
 
   chart_data = df.iloc[:,1:3]
   c = alt.Chart(chart_data).mark_circle().encode(alt.X("Polarity"),alt.Y("Subjectivity"))
@@ -75,5 +75,22 @@ if go:
   ptweets = ptweets['Tweets']
   ntweets = df[df.Analysis == 'Negative']
   ntweets = ntweets['Tweets']
-  st.write(str(round( (ptweets.shape[0] / df.shape[0]) *100 , 1)) + '% of tweets are positive and ' 
-           + str(round( (ntweets.shape[0] / df.shape[0]) *100 , 1)) + '% are negative')
+  
+  plt.title('Sentiment Analysis')
+  plt.xlabel('Sentiment')
+  plt.ylabel('Counts')
+  df['Analysis'].value_counts().plot(kind='bar')
+  plt.show()
+  st.set_option('deprecation.showPyplotGlobalUse', False)
+  st.pyplot()
+
+  colors = ("yellowgreen", "gold", "red")
+  wp = {'linewidth':2, 'edgecolor':"black"}
+  tags = df['Analysis'].value_counts()
+  explode = (0.1,0.1,0.1)
+  tags.plot(kind='pie', autopct='%1.1f%%', shadow=True, colors = colors,
+            startangle=90, wedgeprops = wp, explode = explode, label='')
+  plt.title('Distribution fo sentiments')
+  plt.show()
+  st.set_option('deprecation.showPyplotGlobalUse', False)
+  st.pyplot()
