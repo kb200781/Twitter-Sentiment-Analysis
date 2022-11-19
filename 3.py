@@ -50,7 +50,7 @@ go = st.button('Get Tweets')
 
 if go:
 
-  tweets = tweepy.Cursor(api.search, q=keyword, lang = "en").items(100)
+  tweets = tweepy.Cursor(api.search_tweets, tweet_mode = 'extended', q=keyword).items(100)
 
   tweet_list = []
 
