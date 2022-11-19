@@ -4,7 +4,7 @@ import pandas as pd
 import numpy as np
 import re
 import tweepy
-# import altair as alt
+import altair as alt
 from textblob import TextBlob
 from wordcloud import WordCloud
 import matplotlib.pyplot as plt
