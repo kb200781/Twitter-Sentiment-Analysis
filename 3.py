@@ -4,7 +4,7 @@ import pandas as pd
 import numpy as np
 import re
 import tweepy
-# import altair as alt
+import altair as alt
 from textblob import TextBlob
 from wordcloud import WordCloud
 import matplotlib.pyplot as plt
@@ -23,6 +23,8 @@ auth.set_access_token(accessToken, accessTokenSecret)
 api = tweepy.API(auth)
 
 def cleanTxt(text):
+  text = re.sub('RT @\w+: '," ",text)
+  text = re.sub("(@[A-Za-z0-9]+)|([^0-9A-Za-z \t])|(\w+:\/\/\S+)"," ",text)
   text = re.sub('@[A-Za-z0-9]+', '', text) #Removed @mentions
   text = re.sub(r'#', '', text)            #Removing the # symbol
   text = re.sub(r'RT[\s]+', '', text)      #Removing RT
