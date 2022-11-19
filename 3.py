@@ -50,7 +50,10 @@ if go:
   authenticate.set_access_token(accessToken, accessTokenSecret)
   api = tweepy.API(authenticate, wait_on_rate_limit = True)
 
-  posts = tweepy.Cursor(api.search, q=keyword).items(noOfTweet)
-
-  df = pd.DataFrame( [tweet.text for tweet in posts] , columns=['Tweets'])
-  st.write(df.head())
+  tweets = tweepy.Cursor(api.search, q=keyword).items(noOfTweet)
+  tweet_list = []
+  for tweet in tweets:
+    tweet_list.append(tweet.text)
+  
+  df = pd.DataFrame(tweet_list, columns = ['Tweets'])
+  st.write(df)
