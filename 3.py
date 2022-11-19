@@ -41,7 +41,7 @@ def getAnalysis(score):
     return 'Positive'
 
 keyword = st.text_input('Enter the keyword')
-noOfTweet = st.number_input('Enter the number')
+noOfTweet = int(st.text_input('Enter the number'))
 
 go = st.button('Get Tweets')
 
