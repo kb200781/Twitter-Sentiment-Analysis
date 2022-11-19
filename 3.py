@@ -4,7 +4,7 @@ import pandas as pd
 import numpy as np
 import re
 import tweepy
-import altair as alt
+# import altair as alt
 from textblob import TextBlob
 from wordcloud import WordCloud
 import matplotlib.pyplot as plt
@@ -17,6 +17,10 @@ consumerKey = "we0Drpnvc1FZNazKkiKoFWlGf"
 consumerSecret = "OXRvmJwM6ca9k90XMIMoktSCa5XvjNieqJivcfjbOAlmpO6RhH"
 accessToken = "501682241-ZG1DshytyxUIUY8FXPoH2AXaDG9d5DQlORemfAzU"
 accessTokenSecret = "mxwCYkDjgWG5qWy8ONtVs3j2lxiYSxyberVVa92jmd27z"
+
+auth = tweepy.OAuthHandler(consumerKey, consumerSecret)
+auth.set_access_token(accessToken, accessTokenSecret)
+api = tweepy.API(auth)
 
 def cleanTxt(text):
   text = re.sub('@[A-Za-z0-9]+', '', text) #Removed @mentions
@@ -41,19 +45,18 @@ def getAnalysis(score):
     return 'Positive'
 
 keyword = st.text_input('Enter the keyword')
-noOfTweet = st.text_input('Enter the number')
+noOfTweet = st.number_input('Enter the number')
 
 go = st.button('Get Tweets')
 
 if go:
-  authenticate = tweepy.OAuthHandler(consumerKey, consumerSecret)
-  authenticate.set_access_token(accessToken, accessTokenSecret)
-  api = tweepy.API(authenticate, wait_on_rate_limit = True)
 
   tweets = tweepy.Cursor(api.search, q=keyword).items(noOfTweet)
+
   tweet_list = []
+
   for tweet in tweets:
     tweet_list.append(tweet.text)
   
-  df = pd.DataFrame(tweet_list, columns = ['Tweets'])
+  df = pd.DataFrame(tweet_list)
   st.write(df)
