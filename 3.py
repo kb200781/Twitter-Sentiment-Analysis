@@ -53,7 +53,7 @@ go = st.button('Get Tweets')
 
 if go:
 
-  posts = tweepy.Cursor(api.search_tweets, tweet_mode = 'extended', q=keyword).items(n)
+  posts = tweepy.Cursor(api.search_tweets, tweet_mode = 'extended', q=keyword, lang = "en").items(n)
 
   df = pd.DataFrame( [tweet.full_text for tweet in posts] , columns=['Tweets'])
   
