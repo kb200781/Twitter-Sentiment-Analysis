@@ -45,14 +45,12 @@ def getAnalysis(score):
     return 'Positive'
 
 keyword = st.text_input('Enter the keyword')
-noOfTweet = st.number_input('Enter the number')
-noOfTweet = int(noOfTweet)
 
 go = st.button('Get Tweets')
 
 if go:
 
-  tweets = tweepy.Cursor(api.search, q=keyword).items(noOfTweet)
+  tweets = tweepy.Cursor(api.search, q=keyword, lang = "en").items(100)
 
   tweet_list = []
 
