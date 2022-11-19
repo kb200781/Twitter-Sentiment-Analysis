@@ -55,7 +55,7 @@ if go:
   tweet_list = []
 
   for tweet in tweets:
-    tweet_list.append(tweet.text)
+    tweet_list.append(tweet.full_text)
   
   df = pd.DataFrame(tweet_list)
   st.write(df)
