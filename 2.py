@@ -9,7 +9,7 @@ from textblob import TextBlob
 from wordcloud import WordCloud
 import matplotlib.pyplot as plt
 plt.style.use('fivethirtyeight')
-
+st.set_page_config(page_title="TSA-3", page_icon=":tada:", layout="wide")
 def cleanTxt(text):
   text = re.sub('@[A-Za-z0-9]+', '', text) #Removed @mentions
   text = re.sub(r'#', '', text)            #Removing the # symbol
