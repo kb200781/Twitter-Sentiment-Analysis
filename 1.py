@@ -10,6 +10,7 @@ from wordcloud import WordCloud
 import matplotlib.pyplot as plt
 plt.style.use('fivethirtyeight')
 
+st.set_page_config(page_title="TSA-1", page_icon=":tada:", layout="wide")
 st.title('Twitter Sentiment Analysis')
 st.subheader('Get Tweets')
 
