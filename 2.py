@@ -68,6 +68,7 @@ if uploaded_file is not None:
     ntweets = df[df.Analysis == 'Negative']
     ntweets = ntweets['Tweets']
     
+    st.write(df['Analysis'].value_counts())
     plt.title('Sentiment Analysis')
     plt.xlabel('Sentiment')
     plt.ylabel('Counts')
