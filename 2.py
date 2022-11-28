@@ -67,7 +67,16 @@ if uploaded_file is not None:
     ptweets = ptweets['Tweets']
     ntweets = df[df.Analysis == 'Negative']
     ntweets = ntweets['Tweets']
-    st.write(ptweets)
+    
+    text = ' '.join([word for word in ptweets])
+    plt.figure(figsize=(20,15), facecolor='None')
+    wordcloud = WordCloud(max_words=500, width=1600,  height=800).generate(text)
+    plt.imshow(wordcloud, interpolation='bilinear')
+    plt.axis("off")
+    plt.title('Most frequent words in positive tweets', fontsize=10)
+    plt.show()
+    st.set_option('deprecation.showPyplotGlobalUse', False)
+    st.pyplot()
     
     plt.title('Sentiment Analysis')
     plt.xlabel('Sentiment')
