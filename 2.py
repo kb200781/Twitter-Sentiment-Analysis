@@ -67,6 +67,7 @@ if uploaded_file is not None:
     ptweets = ptweets['Tweets']
     ntweets = df[df.Analysis == 'Negative']
     ntweets = ntweets['Tweets']
+    st.write(ptweets)
     
     plt.title('Sentiment Analysis')
     plt.xlabel('Sentiment')
