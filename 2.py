@@ -82,7 +82,7 @@ if uploaded_file is not None:
     explode = (0.1,0.1,0.1)
     tags.plot(kind='pie', autopct='%1.1f%%', shadow=True, colors = colors,
               startangle=90, wedgeprops = wp, explode = explode, label='')
-    plt.title('Distribution fo sentiments')
+    plt.title('Distribution of sentiments')
     plt.show()
     st.set_option('deprecation.showPyplotGlobalUse', False)
     st.pyplot()
