@@ -19,6 +19,24 @@ consumerSecret = "OXRvmJwM6ca9k90XMIMoktSCa5XvjNieqJivcfjbOAlmpO6RhH"
 accessToken = "501682241-ZG1DshytyxUIUY8FXPoH2AXaDG9d5DQlORemfAzU"
 accessTokenSecret = "mxwCYkDjgWG5qWy8ONtVs3j2lxiYSxyberVVa92jmd27z"
 
+#Appliyng tokenization
+# def tokenization(text):
+#     text = re.split('\W+', text)
+#     return text
+
+# #Removing stopwords
+# stopword = nltk.corpus.stopwords.words('english')
+# def remove_stopwords(text):
+#     text = [word for word in text if word not in stopword]
+#     return text
+  
+# #Appliyng Stemmer
+# ps = nltk.PorterStemmer()
+
+# def stemming(text):
+#     text = [ps.stem(word) for word in text]
+#     return text
+
 def cleanTxt(text):
   text = re.sub('@[A-Za-z0-9]+', '', text) #Removed @mentions
   text = re.sub(r'#', '', text)            #Removing the # symbol
@@ -58,6 +76,7 @@ if go:
   for tweet in posts[0:5]:
     st.write(tweet.full_text)
   
+  st.subheader("Here is the sample of our pre-processing on tweets")
   df['Tweets'] = df['Tweets'].apply(cleanTxt)
   st.write(df.head())
 
@@ -76,6 +95,8 @@ if go:
   ptweets = ptweets['Tweets']
   ntweets = df[df.Analysis == 'Negative']
   ntweets = ntweets['Tweets']
+  netweets = df[df.Analysis == 'Neutral']
+  netweets = netweets['Tweets']
   
   plt.title('Sentiment Analysis')
   plt.xlabel('Sentiment')
@@ -91,7 +112,40 @@ if go:
   explode = (0.1,0.1,0.1)
   tags.plot(kind='pie', autopct='%1.1f%%', shadow=True, colors = colors,
             startangle=90, wedgeprops = wp, explode = explode, label='')
-  plt.title('Distribution fo sentiments')
+  plt.title('Distribution of sentiments')
+  plt.show()
+  st.set_option('deprecation.showPyplotGlobalUse', False)
+  st.pyplot()
+  
+  st.subheader("Frequently used words in positive tweets")
+  text = ' '.join([word for word in ptweets])
+  plt.figure(figsize=(20,15), facecolor='None')
+  wordcloud = WordCloud(max_words=500, width=1600,  height=800).generate(text)
+  plt.imshow(wordcloud, interpolation='bilinear')
+  plt.axis("off")
+  plt.title('Most frequent words in positive tweets', fontsize=10)
+  plt.show()
+  st.set_option('deprecation.showPyplotGlobalUse', False)
+  st.pyplot()
+
+  st.subheader("Frequently used words in negative tweets")
+  text = ' '.join([word for word in ntweets])
+  plt.figure(figsize=(20,15), facecolor='None')
+  wordcloud = WordCloud(max_words=500, width=1600,  height=800).generate(text)
+  plt.imshow(wordcloud, interpolation='bilinear')
+  plt.axis("off")
+  plt.title('Most frequent words in negative tweets', fontsize=10)
+  plt.show()
+  st.set_option('deprecation.showPyplotGlobalUse', False)
+  st.pyplot()
+
+  st.subheader("Frequent words in neutral tweets")
+  text = ' '.join([word for word in netweets])
+  plt.figure(figsize=(20,15), facecolor='None')
+  wordcloud = WordCloud(max_words=500, width=1600,  height=800).generate(text)
+  plt.imshow(wordcloud, interpolation='bilinear')
+  plt.axis("off")
+  plt.title('Most frequent words in neutral tweets', fontsize=10)
   plt.show()
   st.set_option('deprecation.showPyplotGlobalUse', False)
   st.pyplot()
