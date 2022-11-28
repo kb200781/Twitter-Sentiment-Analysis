@@ -67,17 +67,9 @@ if uploaded_file is not None:
     ptweets = ptweets['Tweets']
     ntweets = df[df.Analysis == 'Negative']
     ntweets = ntweets['Tweets']
-    
-    text = ' '.join([word for word in ptweets])
-    plt.figure(figsize=(20,15), facecolor='None')
-    wordcloud = WordCloud(max_words=500, width=1600,  height=800).generate(text)
-    plt.imshow(wordcloud, interpolation='bilinear')
-    plt.axis("off")
-    plt.title('Most frequent words in positive tweets', fontsize=10)
-    plt.show()
-    st.set_option('deprecation.showPyplotGlobalUse', False)
-    st.pyplot()
-    
+    netweets = df[df.Analysis == 'Neutral']
+    nerweets = netweets['Tweets']
+     
     plt.title('Sentiment Analysis')
     plt.xlabel('Sentiment')
     plt.ylabel('Counts')
@@ -93,6 +85,39 @@ if uploaded_file is not None:
     tags.plot(kind='pie', autopct='%1.1f%%', shadow=True, colors = colors,
               startangle=90, wedgeprops = wp, explode = explode, label='')
     plt.title('Distribution of sentiments')
+    plt.show()
+    st.set_option('deprecation.showPyplotGlobalUse', False)
+    st.pyplot()
+    
+    st.subheader("Frequently used words in positive tweets")
+    text = ' '.join([word for word in ptweets])
+    plt.figure(figsize=(20,15), facecolor='None')
+    wordcloud = WordCloud(max_words=500, width=1600,  height=800).generate(text)
+    plt.imshow(wordcloud, interpolation='bilinear')
+    plt.axis("off")
+    plt.title('Most frequent words in positive tweets', fontsize=10)
+    plt.show()
+    st.set_option('deprecation.showPyplotGlobalUse', False)
+    st.pyplot()
+    
+    st.subheader("Frequently used words in negative tweets")
+    text = ' '.join([word for word in ntweets])
+    plt.figure(figsize=(20,15), facecolor='None')
+    wordcloud = WordCloud(max_words=500, width=1600,  height=800).generate(text)
+    plt.imshow(wordcloud, interpolation='bilinear')
+    plt.axis("off")
+    plt.title('Most frequent words in positive tweets', fontsize=10)
+    plt.show()
+    st.set_option('deprecation.showPyplotGlobalUse', False)
+    st.pyplot()
+    
+    st.subheader("Frequent words in neutral tweets")
+    text = ' '.join([word for word in netweets])
+    plt.figure(figsize=(20,15), facecolor='None')
+    wordcloud = WordCloud(max_words=500, width=1600,  height=800).generate(text)
+    plt.imshow(wordcloud, interpolation='bilinear')
+    plt.axis("off")
+    plt.title('Most frequent words in positive tweets', fontsize=10)
     plt.show()
     st.set_option('deprecation.showPyplotGlobalUse', False)
     st.pyplot()
