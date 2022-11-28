@@ -138,8 +138,8 @@ if go:
   plt.show()
   st.set_option('deprecation.showPyplotGlobalUse', False)
   st.pyplot()
-
-  st.subheader("Frequent words in neutral tweets")
+  
+  st.subheader("Frequently used words in neutral tweets")
   text = ' '.join([word for word in netweets])
   plt.figure(figsize=(20,15), facecolor='None')
   wordcloud = WordCloud(max_words=500, width=1600,  height=800).generate(text)
@@ -149,3 +149,4 @@ if go:
   plt.show()
   st.set_option('deprecation.showPyplotGlobalUse', False)
   st.pyplot()
+  
