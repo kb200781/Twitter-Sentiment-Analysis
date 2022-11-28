@@ -58,7 +58,7 @@ if uploaded_file is not None:
     st.write(df.head())
 
     st.header('See what we have analysed')
-
+    st.write(df['Analysis'].value_counts())
     chart_data = df.iloc[:,1:3]
     c = alt.Chart(chart_data).mark_circle().encode(alt.X("Polarity"),alt.Y("Subjectivity"))
     st.altair_chart(c, use_container_width=True)
@@ -68,7 +68,6 @@ if uploaded_file is not None:
     ntweets = df[df.Analysis == 'Negative']
     ntweets = ntweets['Tweets']
     
-    st.write(df['Analysis'].value_counts())
     plt.title('Sentiment Analysis')
     plt.xlabel('Sentiment')
     plt.ylabel('Counts')
