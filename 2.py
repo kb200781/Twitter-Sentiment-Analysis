@@ -11,22 +11,22 @@ import matplotlib.pyplot as plt
 plt.style.use('fivethirtyeight')
 st.set_page_config(page_title="TSA-3", page_icon=":tada:", layout="wide")
 #Appliyng tokenization
-def tokenization(text):
-    text = re.split('\W+', text)
-    return text
+# def tokenization(text):
+#     text = re.split('\W+', text)
+#     return text
 
-#Removing stopwords
-stopword = nltk.corpus.stopwords.words('english')
-def remove_stopwords(text):
-    text = [word for word in text if word not in stopword]
-    return text
+# #Removing stopwords
+# stopword = nltk.corpus.stopwords.words('english')
+# def remove_stopwords(text):
+#     text = [word for word in text if word not in stopword]
+#     return text
   
-#Appliyng Stemmer
-ps = nltk.PorterStemmer()
+# #Appliyng Stemmer
+# ps = nltk.PorterStemmer()
 
-def stemming(text):
-    text = [ps.stem(word) for word in text]
-    return text
+# def stemming(text):
+#     text = [ps.stem(word) for word in text]
+#     return text
   
 def cleanTxt(text):
   text = re.sub('@[A-Za-z0-9]+', '', text) #Removed @mentions
