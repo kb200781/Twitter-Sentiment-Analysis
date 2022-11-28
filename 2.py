@@ -45,6 +45,7 @@ if uploaded_file is not None:
   go = st.button("Analyze tweets")
 
   if go:
+    st.write("Here is the sample of our pre-processing on text")
     df = pd.DataFrame()
     df['Tweets'] = dataframe[text_col]
 
