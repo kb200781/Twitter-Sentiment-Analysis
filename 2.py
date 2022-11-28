@@ -86,7 +86,7 @@ if uploaded_file is not None:
     ntweets = df[df.Analysis == 'Negative']
     ntweets = ntweets['Tweets']
     netweets = df[df.Analysis == 'Neutral']
-    nerweets = netweets['Tweets']
+    netweets = netweets['Tweets']
      
     plt.title('Sentiment Analysis')
     plt.xlabel('Sentiment')
@@ -124,7 +124,7 @@ if uploaded_file is not None:
     wordcloud = WordCloud(max_words=500, width=1600,  height=800).generate(text)
     plt.imshow(wordcloud, interpolation='bilinear')
     plt.axis("off")
-    plt.title('Most frequent words in positive tweets', fontsize=10)
+    plt.title('Most frequent words in negative tweets', fontsize=10)
     plt.show()
     st.set_option('deprecation.showPyplotGlobalUse', False)
     st.pyplot()
@@ -135,7 +135,7 @@ if uploaded_file is not None:
     wordcloud = WordCloud(max_words=500, width=1600,  height=800).generate(text)
     plt.imshow(wordcloud, interpolation='bilinear')
     plt.axis("off")
-    plt.title('Most frequent words in positive tweets', fontsize=10)
+    plt.title('Most frequent words in neutral tweets', fontsize=10)
     plt.show()
     st.set_option('deprecation.showPyplotGlobalUse', False)
     st.pyplot()
