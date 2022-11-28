@@ -76,7 +76,7 @@ if go:
   ntweets = df[df.Analysis == 'Negative']
   ntweets = ntweets['Tweets']
   netweets = df[df.Analysis == 'Neutral']
-  netweets = ntweets['Tweets']
+  netweets = netweets['Tweets']
   
   plt.title('Sentiment Analysis')
   plt.xlabel('Sentiment')
